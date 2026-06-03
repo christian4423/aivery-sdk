@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aivery"
+version = "0.1.0"
+description = "AI memory that understands time — temporal-tree retrieval for LLM agents"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+keywords = ["memory", "ai", "llm", "agents", "rag", "temporal"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "aiohttp>=3.9.0",
+    "aiolimiter>=1.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "pytest-mock>=3.0",
+    "respx>=0.20",
+]
+
+[project.urls]
+Homepage = "https://aivery.io"
+Documentation = "https://docs.aivery.io"
+Repository = "https://github.com/aivery-systems/aivery-python"
+"Bug Tracker" = "https://github.com/aivery-systems/aivery-python/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["aivery"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
