@@ -35,8 +35,8 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://aivery.io"
-Documentation = "https://docs.aivery.io"
+Homepage = "https://aivery.systems"
+Documentation = "https://aivery.systems/docs"
 Repository = "https://github.com/aivery-systems/aivery-python"
 "Bug Tracker" = "https://github.com/aivery-systems/aivery-python/issues"
 
