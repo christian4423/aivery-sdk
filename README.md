@@ -117,38 +117,6 @@ AIVERY_API_KEY=aiv_...                  # required for auth-enabled deployments
 AIVERY_ORG_ID=00000000-...             # multi-tenant org scoping
 ```
 
-## API Reference
-
-### `Memory` / `AsyncMemory`
-
-#### `add(messages, user_id, *, timestamp=None, session_date=None)`
-
-Extract memories from `messages` (string or list of `{"role", "content"}` dicts) and write them.
-
-- `timestamp`: Unix epoch (seconds) — used to date the memories correctly
-- `session_date`: ISO-8601 date string (alternative to `timestamp`)
-
-Returns `{"results": [{"memory": str, "event": "ADD"}, ...]}`.
-
-#### `search(query, user_id, top_k=10)`
-
-Retrieve memories relevant to `query`. Returns a list of:
-```python
-{"memory": str, "score": float, "id": str, "created_at": str}
-```
-
-#### `context(query, user_id, top_k=10)`
-
-Like `search()`, but returns a formatted bullet list string ready to paste into an LLM system prompt.
-
-#### `get_all(user_id)`
-
-Return all stored memories for a user (no ranking).
-
-#### `delete_user(user_id)`
-
-Delete all memories for a user. Returns `True` if successful.
-
 ## Self-hosting
 
 The Aivery server requires Postgres and Qdrant:
