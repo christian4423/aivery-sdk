@@ -28,7 +28,7 @@ Compared to mem0 on the LOCOMO benchmark (LLM judge score, higher = better):
 pip install aivery
 ```
 
-Requires a running Aivery server. See [Self-hosting](#self-hosting) below.
+Requires an Aivery API key. Point `AIVERY_BASE_URL` at `https://api.aivery.systems` or a self-hosted instance.
 
 ## Quickstart
 
@@ -112,27 +112,24 @@ async with AsyncMemory() as m:
 Environment variables:
 
 ```bash
-AIVERY_BASE_URL=http://localhost:5131   # default
-AIVERY_API_KEY=aiv_...                  # required for auth-enabled deployments
-AIVERY_ORG_ID=00000000-...             # multi-tenant org scoping
+AIVERY_BASE_URL=https://api.aivery.systems   # default
+AIVERY_API_KEY=aiv_...                       # required
+AIVERY_ORG_ID=00000000-...                   # multi-tenant org scoping
 ```
+
+## Hosted API
+
+Use the Aivery hosted API at `https://api.aivery.systems` — no setup required.
+
+## Reproducing the LOCOMO benchmark
+
+The numbers in the table above were produced using the [LOCOMO dataset](https://github.com/snap-research/locomo) and the evaluation harness from [mem0](https://github.com/mem0ai/mem0/tree/main/evaluation). The [`benchmark/`](benchmark/) directory in this repo contains the Aivery integration scripts — see [`benchmark/README.md`](benchmark/README.md) for full instructions.
+
+**Cost breakdown:** Ingestion and answer generation run through your Aivery plan (server-side LLM — no key needed on your end). The LLM judge step requires your own OpenAI key and costs ~$5 for the full 1,540-question set. A **Pro tier** or higher is recommended for ingestion throughput.
 
 ## Self-hosting
 
-The Aivery server requires Postgres and Qdrant:
-
-```bash
-# Clone the server
-git clone https://github.com/aivery-systems/aivery-api
-
-# Start dependencies
-docker compose up -d
-
-# Start the API (port 5131)
-dotnet run --project Memory/Memory.csproj
-```
-
-One-command Docker setup coming soon.
+Self-hosting docs and a one-command Docker setup are coming soon.
 
 ## License
 
