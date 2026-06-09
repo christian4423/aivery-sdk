@@ -21,5 +21,5 @@ Async::
 from ._sync_client import Memory
 from ._async_client import AsyncMemory
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __all__ = ["Memory", "AsyncMemory"]

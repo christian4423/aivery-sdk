@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aivery"
-version = "0.1.0"
+version = "0.1.1"
 description = "AI memory that understands time — temporal-tree retrieval for LLM agents"
 readme = "README.md"
 license = { text = "MIT" }
@@ -42,6 +42,14 @@ Repository = "https://github.com/aivery-systems/aivery-python"
 
 [tool.hatch.build.targets.wheel]
 packages = ["aivery"]
+
+[tool.hatch.build]
+exclude = [
+    ".venv*",
+    ".venv-publish",
+    "dist",
+    "*.egg-info",
+]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
