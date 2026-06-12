@@ -18,9 +18,11 @@ Compared to mem0 on the LOCOMO benchmark (LLM judge score, higher = better):
 
 | System | LLM Score |
 |---|---|
-| mem0 (platform) | 0.5571 |
+| mem0 (platform) | 0.6383 |
 | **Aivery (tree + heatmap, K=50)** | **0.6773** |
-| **Aivery (wide retrieval, K=200→50)** | **0.8000** |
+| **Aivery (wide retrieval, K=200→50, gpt-4.1-mini)** | **0.8000** |
+| **Aivery (wide retrieval, K=200→50, Claude Sonnet)** | **0.8227** |
+| **Aivery (full feature stack, Claude Sonnet)** | **0.8201** |
 
 ## Installation
 
