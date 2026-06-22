@@ -71,11 +71,13 @@ python generate_scores.py --input_file results/aivery_eval.json
 Mean Scores Per Category:
              llm_score  count
 category
-single-hop      0.74    282
+single-hop      0.73    282
 temporal        0.73    321
-multi-hop       0.66     96
-open-domain     0.78    841
+multi-hop       0.70     96
+open-domain     0.72    841
 
 Overall Mean Scores:
-llm_score    0.75
+llm_score    0.73
 ```
+
+(Reference numbers from the tree + heatmap, wide-retrieval, Claude Sonnet configuration under the GPT-4.1-mini judge — overall 0.7253; see the main README. Exact figures vary slightly run-to-run with LLM non-determinism.)

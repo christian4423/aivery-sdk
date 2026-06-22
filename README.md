@@ -14,15 +14,14 @@ results = m.search("outdoor activities", user_id="alice")
 
 Most memory systems store facts as a flat list. Aivery organizes memories into a **temporal tree**: related memories are parent/child, time flows from root to leaf, contradictions fork into branches. Retrieval walks the tree — you get a coherent branch of context, not a bag of facts.
 
-Compared to mem0 on the LOCOMO benchmark (LLM judge score, higher = better):
+Compared to mem0 on the LOCOMO benchmark — same harness, same LLM judge (GPT-4.1-mini), higher = better:
 
 | System | LLM Score |
 |---|---|
 | mem0 (platform) | 0.6383 |
-| **Aivery (tree + heatmap, K=50)** | **0.6773** |
-| **Aivery (wide retrieval, K=200→50, gpt-4.1-mini)** | **0.8000** |
-| **Aivery (wide retrieval, K=200→50, Claude Sonnet)** | **0.8227** |
-| **Aivery (full feature stack, Claude Sonnet)** | **0.8201** |
+| **Aivery (tree + heatmap, wide retrieval, Claude Sonnet)** | **0.7253** |
+
+That's **+0.087 overall**, with the gains concentrated exactly where structured memory should win — **temporal +0.595** (0.7321 vs 0.1371) and **multi-hop +0.156** (0.6979 vs 0.5417). Single-hop is at parity; open-domain is the one category where mem0 still leads (−0.088). Both columns are scored by the same GPT-4.1-mini judge on the same evaluation harness.
 
 ## Installation
 
