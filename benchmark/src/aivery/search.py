@@ -58,16 +58,20 @@ class AiverySearch:
                 data = resp.json()
                 debug = data.get("debug", {}) or {}
                 memories = debug.get("memories") or []
+                # Replay-determinism (PHYSICS.md law 3): all three oracle artifacts
+                # are persisted, or the run is not reproducible.
                 return {
                     "response": data.get("response", ""),
                     "retrieved_memories": memories,
+                    "system_prompt": debug.get("system_prompt"),
+                    "raw_response": debug.get("raw_response"),
                 }
             except Exception as e:
                 if attempt < max_retries - 1:
                     time.sleep(2 ** attempt)
                     continue
                 raise e
-        return {"response": "", "retrieved_memories": []}
+        return {"response": "", "retrieved_memories": [], "system_prompt": None, "raw_response": None}
 
     def _process_question(self, item):
         if self.question_delay > 0:
@@ -89,6 +93,8 @@ class AiverySearch:
             "speaker_2_graph_memories": None,
             "response_time":        0,
             "retrieved_memories":   result["retrieved_memories"],
+            "system_prompt":        result["system_prompt"],
+            "raw_response":         result["raw_response"],
         }
 
     def process_data_file(self, file_path: str):
